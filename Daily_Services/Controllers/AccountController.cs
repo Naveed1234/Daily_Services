@@ -1,32 +1,49 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using Daily_Services.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Daily_Services.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using static Daily_Services.ApplicationSignInManager;
 
 namespace Daily_Services.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        // public ApplicationUser context = new ApplicationUser();
+        public ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+
 
         public ApplicationSignInManager SignInManager
         {
@@ -34,9 +51,9 @@ namespace Daily_Services.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -91,6 +108,26 @@ namespace Daily_Services.Controllers
             }
         }
 
+        //User Profile
+
+        public ApplicationUser GetProfile(string id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = db.Users.Where(x => x.Id == id).FirstOrDefault();
+            db.Entry(user).State = EntityState.Detached;
+            return user;
+        }
+
+        public ActionResult UserProfile()
+        {
+
+            var userId = User.Identity.GetUserId();
+            var user = GetProfile(userId);
+
+            return View(user);
+        }
+
+
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -120,7 +157,7 @@ namespace Daily_Services.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -139,6 +176,22 @@ namespace Daily_Services.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+            {
+                if (role.Name == "ServiceProvider")
+                {
+                    list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+                }
+            }
+
+            ViewBag.Roles = list;
+
+
+            ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Type");
+            ViewBag.Gender_Id = new SelectList(db.Genders, "Gender_Id", "Gender_Type");
+            ViewBag.Qualification_Id = new SelectList(db.Qualifications, "Qualification_Id", "Qualification_Type");
+
             return View();
         }
 
@@ -147,16 +200,52 @@ namespace Daily_Services.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                if (file != null)
+                {
+                    string ImageName = System.IO.Path.GetFileName(file.FileName);
+                    string physicalPath = Server.MapPath("~/images/" + ImageName);
+
+                    // save image in folder
+                    file.SaveAs(physicalPath);
+
+                    //save new record in database
+                    model.Image_Path = ImageName;
+                    //db.UserInfoes.Add(newRecord);
+                }
+
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Image_Path = model.Image_Path,
+                    Gender_Id = model.Gender_Id,
+                    Qualification_Id = model.Qualification_Id,
+                    Category_Id = model.Category_Id,
+                    SubCategory_Id = model.SubCategory_Id,
+                    First_Name = model.First_Name,
+                    Last_Name = model.Last_Name,
+                    Phone_Number = model.phone_Number,
+                    CNIC_No = model.CNIC_No,
+                    Address = model.Address,
+                    Description = model.Description,
+                    DateOfBirth = model.DateOfBirth,
+                    Postal_Code = model.Postal_Code,
+                    IsActive = true,
+                    IsDeleted = false,
+                    ServiceOffer = true
+
+
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -171,6 +260,77 @@ namespace Daily_Services.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+
+        //Customer
+
+        // GET: /Account/Register Customer
+        [AllowAnonymous]
+        public ActionResult CustomerRegister()
+        {
+
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+            {
+                if (role.Name == "Customer")
+                {
+                    list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+                    ViewBag.Roless = list;
+                }
+            }
+            // ViewBag.Gender_Id = new SelectList(db.Genders, "Gender_Id", "Gender_Type");
+
+            return View();
+        }
+
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CustomerRegister(CustomerViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var user = new ApplicationUser
+                {
+
+                    Email = model.Email,
+                    UserName = model.Email,
+                    First_Name = model.First_Name,
+                    Last_Name = model.Last_Name,
+                    Phone_Number = model.phone_Number,
+
+                    Address = model.Address,
+                    IsActive = true,
+                    IsDeleted = false,
+                    ServiceOffer = false
+
+
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+
 
         //
         // GET: /Account/ConfirmEmail
@@ -212,7 +372,7 @@ namespace Daily_Services.Controllers
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);       
                 // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }

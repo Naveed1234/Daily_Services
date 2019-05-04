@@ -1,0 +1,93 @@
+﻿
+@model Daily_Services.Models.ContactUs
+@{
+
+    ViewBag.Title = "Contact";
+
+}
+<link href="~/css/font-awesome.css" rel="stylesheet" />
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/inputstylecontactpage.css" rel="stylesheet" />
+@using (Html.BeginForm("ContactUs", "Home", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Contact Section -->
+
+    <div id="contact-section" style="background-color:lightgray;">
+        <div class="container">
+            <h2>Contact Us:</h2>
+            <hr>
+            <div class="row">
+                <div class="section-title center">
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact info</h4>
+                    <div class="space"></div>
+                    <p>
+                        <i class="fa fa-map-marker"></i>&nbsp; Main office Amir Town Lahore
+
+                    </p>
+                    <div class="space"></div>
+                    <p><i class="fa fa-envelope-o"></i>&nbsp; Daily_Services@gmail.com</p>
+                    <div class="space"></div>
+                    <p><i class="fa fa-phone"></i>&nbsp; +92 0308-5488943</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Leave us a message</h2>
+                    <form name="sentMessage" id="contactForm" novalidate="">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Name" })
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", @placeholder = "Phone Number" })
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-mdd-12">
+                            <div class="form-group">
+                                @Html.TextAreaFor(x => x.Message, new { @class = "form-control", @placeholder = "Message", id = "input", cols = "40", rows = "5" })
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div id="success"></div>
+                        <button type="submit" style="margin-left:217px;" class="btn btn-primary">Send Message</button>
+                    </form>
+                    <br />
+                </div>
+                <div class="col-md-4" style="">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108736.03877271789!2d74.26339756374576!3d31.60642657124908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39191c3e05874b0f%3A0x566d84a3bcf51738!2sAL-NOOR+COLLEGE!5e0!3m2!1sen!2s!4v1529580877491" width="350px" height="290px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    @*<div class="container-fluid ">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/search?f=tweets&q=naveedakram874%40gmail.com_id" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="#"><i class="fa fa-github"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+        </div><br />*@
+}

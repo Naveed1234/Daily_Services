@@ -45,10 +45,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Carbon.Data.Protection, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Data.Protection.0.20.0\lib\netstandard2.0\Carbon.Data.Protection.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Json, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Json.1.9.0\lib\netstandard2.0\Carbon.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Packaging, Version=1.29.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Packaging.1.29.1\lib\netstandard2.0\Carbon.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Storage, Version=1.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Storage.1.17.0\lib\netstandard2.0\Carbon.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.VersionControl, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.VersionControl.1.9.0\lib\netstandard2.0\Carbon.VersionControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Carbon.Versioning, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Carbon.Versioning.1.5.0\lib\netstandard2.0\Carbon.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub, Version=1.13.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GitHub.1.13.2\lib\netstandard2.0\GitHub.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcMailer.4.5\lib\45\Mvc.Mailer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -173,29 +216,303 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AcademicController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllUserListController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LaborController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedicalController.cs" />
+    <Compile Include="Controllers\QualificationsController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SearchServiceProviderController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\SubCategoriesController.cs" />
+    <Compile Include="Controllers\TransportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mailer\IUserMailer.cs" />
+    <Compile Include="Mailer\UserMailer.cs" />
+    <Compile Include="Migrations\201904291325270_InitialCreate.cs" />
+    <Compile Include="Migrations\201904291325270_InitialCreate.Designer.cs">
+      <DependentUpon>201904291325270_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904291413448_tt.cs" />
+    <Compile Include="Migrations\201904291413448_tt.Designer.cs">
+      <DependentUpon>201904291413448_tt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905041251598_AddContactClass.cs" />
+    <Compile Include="Migrations\201905041251598_AddContactClass.Designer.cs">
+      <DependentUpon>201905041251598_AddContactClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ContactUs.cs" />
+    <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Qualification.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
+    <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\51755738_2329931173732016_5941282347079958528_n.jpg" />
+    <Content Include="Content\AcadmicDtailBtnhover.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\default.png" />
+    <Content Include="Content\easy-responsive-tabs.css" />
+    <Content Include="Content\flexslider.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\account-bg.jpg" />
+    <Content Include="Content\images\ad1.jpg" />
+    <Content Include="Content\images\ad2.jpg" />
+    <Content Include="Content\images\ad3.jpg" />
+    <Content Include="Content\images\ad4.jpg" />
+    <Content Include="Content\images\ad5.jpg" />
+    <Content Include="Content\images\ad6.jpg" />
+    <Content Include="Content\images\app copy.png" />
+    <Content Include="Content\images\app.png" />
+    <Content Include="Content\images\arrow1.png" />
+    <Content Include="Content\images\arrow2.png" />
+    <Content Include="Content\images\b1.jpg" />
+    <Content Include="Content\images\b10.jpg" />
+    <Content Include="Content\images\b11.jpg" />
+    <Content Include="Content\images\b12.jpg" />
+    <Content Include="Content\images\b13.jpg" />
+    <Content Include="Content\images\b2.jpg" />
+    <Content Include="Content\images\b3.jpg" />
+    <Content Include="Content\images\b4.jpg" />
+    <Content Include="Content\images\b5.jpg" />
+    <Content Include="Content\images\b6.jpg" />
+    <Content Include="Content\images\b7.jpg" />
+    <Content Include="Content\images\b8.jpg" />
+    <Content Include="Content\images\b9.jpg" />
+    <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\bk1.jpg" />
+    <Content Include="Content\images\bk10.jpg" />
+    <Content Include="Content\images\bk11.jpg" />
+    <Content Include="Content\images\bk12.jpg" />
+    <Content Include="Content\images\bk13.jpg" />
+    <Content Include="Content\images\bk2.jpg" />
+    <Content Include="Content\images\bk3.jpg" />
+    <Content Include="Content\images\bk4.jpg" />
+    <Content Include="Content\images\bk5.jpg" />
+    <Content Include="Content\images\bk6.jpg" />
+    <Content Include="Content\images\bk7.jpg" />
+    <Content Include="Content\images\bk8.jpg" />
+    <Content Include="Content\images\bk9.jpg" />
+    <Content Include="Content\images\c1.jpg" />
+    <Content Include="Content\images\c10.jpg" />
+    <Content Include="Content\images\c11.jpg" />
+    <Content Include="Content\images\c12.jpg" />
+    <Content Include="Content\images\c13.jpg" />
+    <Content Include="Content\images\c2.jpg" />
+    <Content Include="Content\images\c3.jpg" />
+    <Content Include="Content\images\c4.jpg" />
+    <Content Include="Content\images\c5.jpg" />
+    <Content Include="Content\images\c6.jpg" />
+    <Content Include="Content\images\c7.jpg" />
+    <Content Include="Content\images\c8.jpg" />
+    <Content Include="Content\images\c9.jpg" />
+    <Content Include="Content\images\cat1.png" />
+    <Content Include="Content\images\cat10.png" />
+    <Content Include="Content\images\cat11.png" />
+    <Content Include="Content\images\cat12.png" />
+    <Content Include="Content\images\cat2.png" />
+    <Content Include="Content\images\cat3.png" />
+    <Content Include="Content\images\cat4.png" />
+    <Content Include="Content\images\cat5.png" />
+    <Content Include="Content\images\cat6.png" />
+    <Content Include="Content\images\cat7.png" />
+    <Content Include="Content\images\cat8.png" />
+    <Content Include="Content\images\cat9.png" />
+    <Content Include="Content\images\client_1.jpg" />
+    <Content Include="Content\images\client_2.jpg" />
+    <Content Include="Content\images\client_3.jpg" />
+    <Content Include="Content\images\client_4.jpg" />
+    <Content Include="Content\images\close-quatation.jpg" />
+    <Content Include="Content\images\close.png" />
+    <Content Include="Content\images\d1.jpg" />
+    <Content Include="Content\images\d10.jpg" />
+    <Content Include="Content\images\d11.jpg" />
+    <Content Include="Content\images\d12.jpg" />
+    <Content Include="Content\images\d13.jpg" />
+    <Content Include="Content\images\d2.jpg" />
+    <Content Include="Content\images\d3.jpg" />
+    <Content Include="Content\images\d4.jpg" />
+    <Content Include="Content\images\d5.jpg" />
+    <Content Include="Content\images\d6.jpg" />
+    <Content Include="Content\images\d7.jpg" />
+    <Content Include="Content\images\d8.jpg" />
+    <Content Include="Content\images\d9.jpg" />
+    <Content Include="Content\images\e1.jpg" />
+    <Content Include="Content\images\e10.jpg" />
+    <Content Include="Content\images\e11.jpg" />
+    <Content Include="Content\images\e12.jpg" />
+    <Content Include="Content\images\e13.jpg" />
+    <Content Include="Content\images\e2.jpg" />
+    <Content Include="Content\images\e3.jpg" />
+    <Content Include="Content\images\e4.jpg" />
+    <Content Include="Content\images\e5.jpg" />
+    <Content Include="Content\images\e6.jpg" />
+    <Content Include="Content\images\e7.jpg" />
+    <Content Include="Content\images\e8.jpg" />
+    <Content Include="Content\images\e9.jpg" />
+    <Content Include="Content\images\f1.jpg" />
+    <Content Include="Content\images\f2.jpg" />
+    <Content Include="Content\images\f3.jpg" />
+    <Content Include="Content\images\fa1.jpg" />
+    <Content Include="Content\images\fa10.jpg" />
+    <Content Include="Content\images\fa11.jpg" />
+    <Content Include="Content\images\fa12.jpg" />
+    <Content Include="Content\images\fa13.jpg" />
+    <Content Include="Content\images\fa2.jpg" />
+    <Content Include="Content\images\fa3.jpg" />
+    <Content Include="Content\images\fa4.jpg" />
+    <Content Include="Content\images\fa5.jpg" />
+    <Content Include="Content\images\fa6.jpg" />
+    <Content Include="Content\images\fa7.jpg" />
+    <Content Include="Content\images\fa8.jpg" />
+    <Content Include="Content\images\fa9.jpg" />
+    <Content Include="Content\images\final 2.png" />
+    <Content Include="Content\images\final.png" />
+    <Content Include="Content\images\footer logo.png" />
+    <Content Include="Content\images\fr1.jpg" />
+    <Content Include="Content\images\fr10.jpg" />
+    <Content Include="Content\images\fr11.jpg" />
+    <Content Include="Content\images\fr12.jpg" />
+    <Content Include="Content\images\fr13.jpg" />
+    <Content Include="Content\images\fr2.jpg" />
+    <Content Include="Content\images\fr3.jpg" />
+    <Content Include="Content\images\fr4.jpg" />
+    <Content Include="Content\images\fr5.jpg" />
+    <Content Include="Content\images\fr6.jpg" />
+    <Content Include="Content\images\fr7.jpg" />
+    <Content Include="Content\images\fr8.jpg" />
+    <Content Include="Content\images\fr9.jpg" />
+    <Content Include="Content\images\icons.png" />
+    <Content Include="Content\images\img-sprite1.png" />
+    <Content Include="Content\images\k1.jpg" />
+    <Content Include="Content\images\k10.jpg" />
+    <Content Include="Content\images\k11.jpg" />
+    <Content Include="Content\images\k12.jpg" />
+    <Content Include="Content\images\k13.jpg" />
+    <Content Include="Content\images\k2.jpg" />
+    <Content Include="Content\images\k3.jpg" />
+    <Content Include="Content\images\k4.jpg" />
+    <Content Include="Content\images\k5.jpg" />
+    <Content Include="Content\images\k6.jpg" />
+    <Content Include="Content\images\k7.jpg" />
+    <Content Include="Content\images\k8.jpg" />
+    <Content Include="Content\images\k9.jpg" />
+    <Content Include="Content\images\lock.png" />
+    <Content Include="Content\images\m1.jpg" />
+    <Content Include="Content\images\m10.jpg" />
+    <Content Include="Content\images\m11.jpg" />
+    <Content Include="Content\images\m12.jpg" />
+    <Content Include="Content\images\m13.jpg" />
+    <Content Include="Content\images\m2.jpg" />
+    <Content Include="Content\images\m3.jpg" />
+    <Content Include="Content\images\m4.jpg" />
+    <Content Include="Content\images\m5.jpg" />
+    <Content Include="Content\images\m6.jpg" />
+    <Content Include="Content\images\m7.jpg" />
+    <Content Include="Content\images\m8.jpg" />
+    <Content Include="Content\images\m9.jpg" />
+    <Content Include="Content\images\mob2.png" />
+    <Content Include="Content\images\new 1.png" />
+    <Content Include="Content\images\new 2.png" />
+    <Content Include="Content\images\open-quatation.jpg" />
+    <Content Include="Content\images\p-1.png" />
+    <Content Include="Content\images\p-10.png" />
+    <Content Include="Content\images\p-2.png" />
+    <Content Include="Content\images\p-3.gif" />
+    <Content Include="Content\images\p-3.png" />
+    <Content Include="Content\images\p-4.png" />
+    <Content Include="Content\images\p-5.png" />
+    <Content Include="Content\images\p-6.png" />
+    <Content Include="Content\images\p-7.png" />
+    <Content Include="Content\images\p-8.png" />
+    <Content Include="Content\images\p-9.png" />
+    <Content Include="Content\images\p1.jpg" />
+    <Content Include="Content\images\p10.jpg" />
+    <Content Include="Content\images\p11.jpg" />
+    <Content Include="Content\images\p12.jpg" />
+    <Content Include="Content\images\p2.jpg" />
+    <Content Include="Content\images\p3.jpg" />
+    <Content Include="Content\images\p4.jpg" />
+    <Content Include="Content\images\p5.jpg" />
+    <Content Include="Content\images\p6.jpg" />
+    <Content Include="Content\images\p7.jpg" />
+    <Content Include="Content\images\p8.jpg" />
+    <Content Include="Content\images\p9.jpg" />
+    <Content Include="Content\images\r1.jpg" />
+    <Content Include="Content\images\r10.jpg" />
+    <Content Include="Content\images\r11.jpg" />
+    <Content Include="Content\images\r12.jpg" />
+    <Content Include="Content\images\r13.jpg" />
+    <Content Include="Content\images\r2.jpg" />
+    <Content Include="Content\images\r3.jpg" />
+    <Content Include="Content\images\r4.jpg" />
+    <Content Include="Content\images\r5.jpg" />
+    <Content Include="Content\images\r6.jpg" />
+    <Content Include="Content\images\r7.jpg" />
+    <Content Include="Content\images\r8.jpg" />
+    <Content Include="Content\images\r9.jpg" />
+    <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\ss1.jpg" />
+    <Content Include="Content\images\ss2.jpg" />
+    <Content Include="Content\images\ss3.jpg" />
+    <Content Include="Content\images\ss4.jpg" />
+    <Content Include="Content\images\themes.gif" />
+    <Content Include="Content\images\themes1.png" />
+    <Content Include="Content\images\tick %281%29.png" />
+    <Content Include="Content\images\tick.png" />
+    <Content Include="Content\images\top-arrow.png" />
+    <Content Include="Content\images\user.png" />
+    <Content Include="Content\images\world_map.png" />
+    <Content Include="Content\inputstylecontactpage.css" />
+    <Content Include="Content\jquery-ui1.css" />
+    <Content Include="Content\jquery.uls.css" />
+    <Content Include="Content\jquery.uls.grid.css" />
+    <Content Include="Content\jquery.uls.lcd.css" />
+    <Content Include="Content\MainUserProfile.css" />
+    <Content Include="Content\menu_sideslide.css" />
+    <Content Include="Content\Mystyle.css" />
+    <Content Include="Content\Register Style Page.css" />
+    <Content Include="Content\Register_Style.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -207,6 +524,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Style\RegisterStyle.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -241,9 +559,50 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Genders\Create.cshtml" />
+    <Content Include="Views\Genders\Delete.cshtml" />
+    <Content Include="Views\Genders\Details.cshtml" />
+    <Content Include="Views\Genders\Edit.cshtml" />
+    <Content Include="Views\Genders\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\SubCategories\Create.cshtml" />
+    <Content Include="Views\SubCategories\Delete.cshtml" />
+    <Content Include="Views\SubCategories\Details.cshtml" />
+    <Content Include="Views\SubCategories\Edit.cshtml" />
+    <Content Include="Views\SubCategories\Index.cshtml" />
+    <Content Include="Views\Qualifications\Create.cshtml" />
+    <Content Include="Views\Qualifications\Delete.cshtml" />
+    <Content Include="Views\Qualifications\Details.cshtml" />
+    <Content Include="Views\Qualifications\Edit.cshtml" />
+    <Content Include="Views\Qualifications\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\DeleteConfirm.cshtml" />
+    <Content Include="Views\Account\CustomerRegister.cshtml" />
+    <Content Include="Views\AllUserList\ServiceProvider.cshtml" />
+    <Content Include="Views\AllUserList\CutomerList.cshtml" />
+    <Content Include="Views\Academic\AcademicSubCategories.cshtml" />
+    <Content Include="Views\Labor\LaborSubCategories.cshtml" />
+    <Content Include="Views\Medical\MedicalSubCategories.cshtml" />
+    <Content Include="Views\Transport\LaborSubCategories.cshtml" />
+    <Content Include="Views\SearchServiceProvider\Search.cshtml" />
+    <Content Include="Views\SearchServiceProvider\_ShowServiceProviderList.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\UserMailer\ContactUs.cshtml" />
+    <Content Include="Views\UserMailer\ResetPassword.cshtml" />
+    <Content Include="Views\UserMailer\Welcome.cshtml" />
+    <Content Include="Views\UserMailer\_Layout.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
+    <Folder Include="Views\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -257,6 +616,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904291325270_InitialCreate.resx">
+      <DependentUpon>201904291325270_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904291413448_tt.resx">
+      <DependentUpon>201904291413448_tt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905041251598_AddContactClass.resx">
+      <DependentUpon>201905041251598_AddContactClass.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

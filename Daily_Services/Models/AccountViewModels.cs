@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Daily_Services.Models
@@ -64,10 +65,16 @@ namespace Daily_Services.Models
 
     public class RegisterViewModel
     {
+        public string First_Name { get; set; }
+
+        public string Last_Name { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public string phone_Number { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -77,9 +84,67 @@ namespace Daily_Services.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string CNIC_No { get; set; }
+
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+
+        public int Gender_Id { get; set; }
+
+        public int Category_Id { get; set; }
+
+        public int SubCategory_Id { get; set; }
+
+        public int Qualification_Id { get; set; }
+        public string Image_Path { get; set; }
+
+        public string Address { get; set; }
+
+        public string Description { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool ServiceOffer { get; set; }
+
+        public string Postal_Code { get; set; }
+        public string RoleName { get; set; }
+
+
     }
+
+    public class CustomerViewModel
+    {
+        public string First_Name { get; set; }
+
+        public string Last_Name { get; set; }
+
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+        public string phone_Number { get; set; }
+
+        public string Address { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool ServiceOffer { get; set; }
+        public string RoleName { get; set; }
+
+    }
+
+
 
     public class ResetPasswordViewModel
     {
@@ -96,7 +161,7 @@ namespace Daily_Services.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

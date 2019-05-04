@@ -1,31 +1,138 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<!-- Slider -->
+<div class="slider">
+    <ul class="rslides" id="slider">
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Academic Services</h3>
+                <a href="categories.html" class="w3layouts-explore-all">Browse all Categories</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Transport Services</h3>
+                <a href="categories.html" class="w3layouts-explore">Explore</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Medical Services</h3>
+                <a href="real-estate.html" class="w3layouts-explore">Explore</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>Labour Services</h3>
+                <a href="bikes.html" class="w3layouts-explore">Explore</a>
+            </div>
+        </li>
+        <li>
+            <div class="w3ls-slide-text">
+                <h3>The Easiest Way to get a Job</h3>
+                <a href="jobs.html" class="w3layouts-explore">Find a Job</a>
+            </div>
+        </li>
+    </ul>
 </div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!-- //Slider -->
+<!-- content-starts-here -->
+<div class="main-content">
+    <div class="w3-categories">
+        <h3>Browse Categories</h3>
+        <div class="container form-inline">
+            <div class="col-md-3">
+                <div class="focus-grid w3layouts-boder1">
+                    <a class="btn-8" href="/Register/Show/">
+                        <div class="focus-border">
+                            <div class="focus-layout">
+                                <div class="focus-image"><i class="fa fa-book"></i></div>
+                                <h4 class="clrchg">Academic</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="focus-grid w3layouts-boder2">
+                    <a class="btn-8" href="/Register/ShowTransport/">
+                        <div class="focus-border">
+                            <div class="focus-layout">
+                                <div class="focus-image"><i class="fa fa-car"></i></div>
+                                <h4 class="clrchg"> Transport </h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="focus-grid w3layouts-boder3">
+                    <a class="btn-8" href="/Register/ShowMedical/">
+                        <div class="focus-border">
+                            <div class="focus-layout">
+                                <div class="focus-image"><i class="fa fa-wheelchair"></i></div>
+                                <h4 class="clrchg">Medical</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="focus-grid w3layouts-boder4">
+                    <a class="btn-8" href="/Register/ShowLabour/">
+                        <div class="focus-border">
+                            <div class="focus-layout">
+                                <div class="focus-image"><i class="fa fa-shield"></i></div>
+                                <h4 class="clrchg">Labour</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <!--partners-->
+    <div class="w3layouts-partners">
+        <h3>Our Partners</h3>
+        <div class="container">
+            <ul>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-1.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-2.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-3.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-4.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-5.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-6.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-7.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-8.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-9.png" alt=""></a></li>
+                <li><a href="#"><img class="img-responsive" src="~/Content/images/p-10.png" alt=""></a></li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <!--//partners-->
+    <!-- mobile app -->
+    <div class="agile-info-mobile-app">
+        <div class="container form-inline">
+            <div class="col-md-5 w3-app-left">
+                <a href="mobileapp.html"><img src="~/Content/images/app copy.png" alt=""></a>
+            </div>
+            <div class="col-md-7 w3-app-right">
+                <h3>Daily_Services App <span>Easiest</span> to Seek the Services or Register the Service</h3>
+                <p>We are here for providing you a services..</p>
+                <div class="agileits-dwld-app">
+                    <h6>
+                        Download The App :
+                        <a href="#"><i class="fa fa-apple"></i></a>
+                        <a href="#"><i class="fa fa-windows"></i></a>
+                        <a href="#"><i class="fa fa-android"></i></a>
+                    </h6>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
+    <!-- //mobile app -->
 </div>

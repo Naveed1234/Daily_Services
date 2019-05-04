@@ -6,39 +6,194 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <title>Daily_Services</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css"><!-- bootstrap-CSS -->
+    <link rel="stylesheet" href="~/Content/bootstrap-select.css"><!-- bootstrap-select-CSS -->
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
+    <link rel="stylesheet" href="~/Content/flexslider.css" type="text/css" media="screen" /><!-- flexslider-CSS -->
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" /><!-- fontawesome-CSS -->
+    <link rel="stylesheet" href="~/Content/menu_sideslide.css" type="text/css" media="all"><!-- Navigation-CSS -->
+    <!-- meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //meta tags -->
+    <!--fonts-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!--//fonts-->
+</head>
+<body>
+    <div class="container">
+        <div class="agile-its-header">
+            <div class="logo">
+                <a href="/Home/Index"><span><img src="~/Content/images/final 2.png" /></span></a>
+            </div>
+            <div class="agileits_search">
+                <form action="@Url.Action("Index", "Register")" method="get">
+                    @*@Html.Partial("_LoginPartial")*@
+                    <input name="Seaching_Data" id="Seaching_Data" type="text" placeholder="How can we help you today?" required="" />
+                    <select id="agileinfo_search" name="agileinfo_search" required="">
+                        <option value="">All Categories</option>
+                        <option value="Acadmic">Acadmic_Services</option>
+                        <option value="Transport">Transport_Services</option>
+                        <option value="Medical">Medical_Services</option>
+                        <option value="Labour">Labour_Services</option>
+                    </select>
+                    <button type="submit" class="btn btn-default" aria-label="Left Align">
+                        <i class="fa fa-search" aria-hidden="true"> </i>
+                    </button>
+                </form>
+                <a class="post-w3layouts-ad" href="/Register/Create/">Register</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //header -->
+    <!-- start-smoth-scrolling -->
+    <!-- //here ends scrolling icon -->
+    @RenderBody()
+    <!--footer section start-->
+    <footer>
+        <div class="clearfix"></div>
+        <div class="agileits-footer-bottom text-center">
+            <div class="container">
+                <div class="w3-footer-logo">
+                    <h1><a href="index.html"><span><img src="~/Content/images/final 2.png" /></span></a></h1>
+                </div>
+                <div class="w3-footer-social-icons">
+                    <ul>
+                        <li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+                        <li><a class="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+                        <li><a class="flickr" href="#"><i class="fa fa-flickr" aria-hidden="true"></i><span>Flickr</span></a></li>
+                        <li><a class="googleplus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
+                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a></li>
+                    </ul>
+                </div>
+                <div class="copyrights">
+                    <p> © 2019 Daily_Services. All Rights Reserved | Design by  <a href="#"> <b>MNA</b></a></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </footer>
+    <!--footer section end-->
+    <!-- Navigation-Js-->
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
+    <script type="text/javascript" src="~/Scripts/classie.js"></script>
+    <!-- //Navigation-Js-->
+    <!-- js -->
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <!-- js -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-select.js"></script>
+    <script>
+    $(document).ready(function () {
+            var mySelect = $('#first-disabled2');
+
+            $('#special').on('click', function () {
+                mySelect.find('option:selected').prop('disabled', true);
+                mySelect.selectpicker('refresh');
+            });
+
+            $('#special2').on('click', function () {
+                mySelect.find('option:disabled').prop('disabled', false);
+                mySelect.selectpicker('refresh');
+            });
+
+            $('#basic2').selectpicker({
+                liveSearch: true,
+                maxOptions: 1
+            });
+        });</script>
+    <!-- language-select -->
+    <script type="text/javascript" src="~/Scripts/jquery.leanModal.min.js"></script>
+    <link href="~/Content/jquery.uls.css" rel="stylesheet" />
+    <link href="~/Content/jquery.uls.grid.css" rel="stylesheet" />
+    <link href="~/Content/jquery.uls.lcd.css" rel="stylesheet" />
+    <!-- Source -->
+    <script src="~/Scripts/jquery.uls.data.js"></script>      <!-- uls.data.js -->
+    <script src="~/Scripts/jquery.uls.data.utils.js"></script>     <!-- uls.data.utils.js -->
+    <script src="~/Scripts/jquery.uls.lcd.js"></script>        <!-- uls.lcd.js -->
+    <script src="~/Scripts/jquery.uls.languagefilter.js"></script>     <!-- uls.languagefilter.js -->
+    <script src="~/Scripts/jquery.uls.regionfilter.js"></script>     <!-- uls.regionfilter -->
+    <script src="~/Scripts/jquery.uls.core.js"></script>       <!-- uls.core.js -->
+    <script>
+    $(document).ready(function () {
+            $('.uls-trigger').uls({
+                onSelect: function (language) {
+                    var languageName = $.uls.data.getAutonym(language);
+                    $('.uls-trigger').text(languageName);
+                },
+                quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
+            });
+        });</script>
+    <!-- //language-select -->
+    <script type="text/javascript" src="~/Scripts/jquery.flexisel.js"></script><!-- flexisel-js -->
+    <script type="text/javascript">
+    $(window).load(function () {
+            $("#flexiselDemo3").flexisel({
+                visibleItems: 1,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 5000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 1
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 1
+                    }
+                }
+            });
+
+        });</script>
+    <!-- Slider-JavaScript -->
+    <script src="~/Scripts/responsiveslides.min.js"></script>
+    <script>
+    $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                pager: false,
+                nav: true,
+                speed: 500,
+                maxwidth: 800,
+                namespace: "large-btns"
+            });
+
+        });</script>
+    <!-- //Slider-JavaScript -->
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+                                                /*
+                                                                                                                            var defaults = {
+                                                                                                                            containerID: 'toTop', // fading element id
+        @Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+                                                                                                                   containerHoverID: 'toTopHover', // fading element hover id
+                                                                                                                            scrollSpeed: 1200,
+                                                                                                                            easingType: 'linear'
+                                                                                                                            };
+                                                                                                                        */
+    </script>
 </body>
 </html>

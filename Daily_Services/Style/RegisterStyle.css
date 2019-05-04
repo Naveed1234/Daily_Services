@@ -1,0 +1,14 @@
+﻿
+.form-control {
+    border: 1px solid black;
+    border-radius: 0px;
+    margin-bottom: 15px;
+    height: 30px;
+}
+
+    .form-control:hover {
+        background-color: antiquewhite;
+    }
+
+body {
+}

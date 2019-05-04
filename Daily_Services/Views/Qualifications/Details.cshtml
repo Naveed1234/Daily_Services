@@ -1,0 +1,26 @@
+﻿@model Daily_Services.Models.Qualification
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Qualification</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Qualification_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qualification_Type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Qualification_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
