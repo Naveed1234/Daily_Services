@@ -1,0 +1,322 @@
+﻿@model Daily_Services.Models.ApplicationUser
+@{
+    ViewBag.Title = "AcadmicDetail";
+}
+<head>
+    <link href="~/Content/AcadmicDtailBtnhover.css" rel="stylesheet" />
+    <link href="~/Content/MainUserProfile.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row container">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img class="pic" src="/images/@Model.Image_Path" alt="Mia" />
+                    @*<div class=" ">
+                            Change Photo
+                            <a href="/Register/ChangePicture/@Model.Registration_Id" id="alink" class="btn" style="border-radius:30px;background-color:aliceblue;color:black;font-size:30px;font:bold;width:170px;}">Change Picture</a>
+
+                        </div>*@
+                </div>
+                <center>
+                    @*<center><input type="submit" class="btn btn-default" style="border-radius:30px; background-color:aquamarine"><a href="~/Register/EditProfile/@Model.Registration_Id">Edit Profile</a></input></center>*@
+
+                </center>
+                @*<center><input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" /></center>*@
+                <br />
+                <div class="row">
+                    <div class="col-md-5">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.First_Name)
+                            </dt>
+                        </dl>
+                    </div>
+                    <div class="col-md-5">
+                        <dl>
+                            <dd>
+                                <b style="color:blue"> @Html.DisplayFor(model => model.First_Name)</b>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-5">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </dt>
+                        </dl>
+                    </div>
+                    <div class="col-md-5">
+                        <dl>
+                            <dd>
+                                <b style="color:blue"> @Html.DisplayFor(model => model.Email)</b>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-5">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Phone_Number)
+                            </dt>
+                        </dl>
+                    </div>
+                    <div class="col-md-5">
+                        <dl>
+                            <dd>
+                                <b style="color:blue">  @Html.DisplayFor(model => model.Phone_Number)</b>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head ">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Personal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Description</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.First_Name)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>  @Html.DisplayFor(model => model.First_Name)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Last_Name)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>  @Html.DisplayFor(model => model.Last_Name)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p> @Html.DisplayFor(model => model.Email)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Phone_Number)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>  @Html.DisplayFor(model => model.Phone_Number)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Gender)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>  @Html.DisplayFor(model => model.Gender.Gender_Type)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>  @Html.DisplayFor(model => model.Address)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.CNIC_No)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>@Html.DisplayFor(model => model.CNIC_No)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Postal_Code)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>@Html.DisplayFor(model => model.Postal_Code)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>@Html.DisplayFor(model => model.Description)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Qualification)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>@Html.DisplayFor(model => model.Qualification.Qualification_Type)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Category)
+                                    </dt>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dd>
+                                        <p>@Html.DisplayFor(model => model.Category.Category_Type)</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Experience</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Hourly Rate</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>10$/hr</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Total Projects</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>230</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>English Level</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Availability</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>6 months</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Your Bio</label><br />
+                                <p>Your detail description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id =Model.Id })*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

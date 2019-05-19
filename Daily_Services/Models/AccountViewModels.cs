@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -109,7 +110,8 @@ namespace Daily_Services.Models
 
         public string Postal_Code { get; set; }
         public string RoleName { get; set; }
-
+        public IEnumerable<string> Roles { get; set; }
+        public List<IdentityRole> RolesList { get; set; }
 
     }
 
@@ -141,7 +143,8 @@ namespace Daily_Services.Models
         public bool IsDeleted { get; set; }
         public bool ServiceOffer { get; set; }
         public string RoleName { get; set; }
-
+        public IEnumerable<string> Roles { get; set; }
+        public List<IdentityRole> RolesList { get; set; }
     }
 
 

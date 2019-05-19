@@ -1,189 +1,190 @@
 ﻿@model IEnumerable<Daily_Services.Models.ApplicationUser>
-
 @{
-    ViewBag.Title = "ServiceProvider";
+    /**/
+
+    // ViewBag.Title = "ServiceProvider";
 }
-
-<h2>ServiceProvider</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Category_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender.Gender_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Qualification.Qualification_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SubCategory.SubCategory_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Last_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone_Number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image_Path)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Postal_Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CNIC_No)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ServiceOffer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Category_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender.Gender_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Qualification.Qualification_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubCategory.SubCategory_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.First_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Last_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone_Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image_Path)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postal_Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CNIC_No)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceOffer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PasswordHash)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecurityStamp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccessFailedCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div class="container-fluid">
+    &nbsp;&nbsp;&nbsp;
+    <h2 class="pt-20 mt-5">ServiceProvider List</h2>
+    <table class="table table-striped bg-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Last_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_Number)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Gender.Gender_Type)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Qualification.Qualification_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubCategory.SubCategory_Type)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Category.Category_Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Image_Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Postal_Code)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CNIC_No)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ServiceOffer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.EmailConfirmed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PasswordHash)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecurityStamp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LockoutEnabled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccessFailedCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th></th>*@
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.First_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone_Number)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Gender.Gender_Type)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qualification.Qualification_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCategory.SubCategory_Type)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Category.Category_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>*@
+                <td>
+                    <img src="~/images/@item.Image_Path" style="height:70px;width:70px" class="zmdi-time-interval" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Postal_Code)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CNIC_No)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceOffer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsDeleted)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PasswordHash)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecurityStamp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>*@
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>*@
+            </tr>
+        }
+    </table>
+</div>

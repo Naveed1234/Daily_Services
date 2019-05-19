@@ -65,6 +65,7 @@ namespace Daily_Services.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> GetSubCategories { get; set; }
         public DbSet<Qualification> Qualifications { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
 
         public ApplicationDbContext()
@@ -78,6 +79,10 @@ namespace Daily_Services.Models
         }
 
         public System.Data.Entity.DbSet<Daily_Services.Models.RoleViewModel> RoleViewModels { get; set; }
+
+        // public System.Data.Entity.DbSet<Daily_Services.Models.ApplicationUser> ApplicationUsers { get; set; }
+
+        //  public System.Data.Entity.DbSet<Daily_Services.Models.ApplicationUser> ApplicationUsers { get; set; }
 
         //public System.Data.Entity.DbSet<Daily_Services.Models.ApplicationUser> ApplicationUsers { get; set; }
     }

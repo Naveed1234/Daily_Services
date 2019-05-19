@@ -1,0 +1,49 @@
+﻿
+@model  Daily_Services.Models.ApplicationUser
+@{
+    /**/
+
+    ViewBag.Title = "Show";
+}
+<head>
+    <meta charset="UTF-8">
+    <title>Profile cards animated with CSS3</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="prefixfree.min.js"></script>
+</head>
+<div>
+    <div id="wrapper" class="container">
+        <br />
+        <h3>Academic Records</h3>
+        <br />
+
+        <div id="content">
+            <div class="row">
+                @foreach (var item in ViewBag.AcadmicList)
+                {
+                   
+                    <a href="~/ServiceProvider/AcademicDetail/@item.Id">
+                        <div class="col-md-3">
+                            <div class="img-thumbnail" style="margin-bottom:10px">
+                                <img class="pic" src="/images/@item.Image_Path" alt="Mia" style="height:250px; width:100%" />
+                                <b>
+                                    @item.First_Name &nbsp;
+                                    @item.Last_Name<br />
+                                    @item.SubCategory.SubCategory_Type<br />
+                                    @*@Html.DisplayFor(modelItem => item.Last_Name)*@
+                                </b>
+                                <b>
+                                    @*@Html.DisplayFor(modelItem => item.SubCategory.SubCategory_Type)*@
+                                </b>
+                                @Html.ActionLink("AcadmicDetail", "AcademicDetail", "ServiceProvider", new { id = item.Id })<br />
+                                @*@Html.ActionLink("Appointment", "Appointment", new { id = item.AppID })*@
+                            </div>
+                        </div>
+                    </a>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

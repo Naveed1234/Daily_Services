@@ -2,9 +2,11 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -12,10 +14,12 @@ using static Daily_Services.ApplicationSignInManager;
 
 namespace Daily_Services.Controllers
 {
+    //[AllowAnonymous]
     [Authorize]
+
     public class AccountController : Controller
     {
-        // public ApplicationUser context = new ApplicationUser();
+        public ApplicationUser context = new ApplicationUser();
         public ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -68,7 +72,81 @@ namespace Daily_Services.Controllers
                 _userManager = value;
             }
         }
+        public ApplicationUser UpdateProfile(string id)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var user = context.Users.Where(x => x.Id == id).FirstOrDefault();
+            context.Entry(user).State = EntityState.Detached;
+            return user;
+        }
 
+        [HttpGet]
+        public ActionResult UpdateCustomer()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            List<Gender> genders = db.Genders.ToList();
+            ViewBag.Gender_Id = new SelectList(genders, "Gender_Id", "Gender_Type");
+            ViewBag.Qualification_Id = new SelectList(db.Qualifications, "Qualification_Id", "Qualification_Type");
+            ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Type");
+            var userId = User.Identity.GetUserId();
+            ApplicationUser user = context.Users.Find(userId);
+
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult UpdateCustomer(ApplicationUser update, HttpPostedFileBase file)
+        {
+            try
+            {
+                using (var context = new ApplicationDbContext())
+                {
+                    if (file != null)
+                    {
+                        string ImageName = System.IO.Path.GetFileName(file.FileName);
+                        string physicalPath = Server.MapPath("~/AppImages/" + ImageName);
+
+                        // save image in folder
+                        file.SaveAs(physicalPath);
+
+                        //save new record in database
+                        update.Image_Path = ImageName;
+                        //db.UserInfoes.Add(newRecord);
+                    }
+
+                    var cutomer_Id = User.Identity.GetUserId();
+                    var prof = UpdateProfile(cutomer_Id);
+                    prof.Email = update.Email;
+                    prof.First_Name = update.First_Name;
+                    prof.Last_Name = update.Last_Name;
+                    prof.Address = update.Address;
+                    prof.Gender_Id = update.Gender_Id;
+                    prof.Description = update.Description;
+                    prof.Qualification_Id = update.Qualification_Id;
+                    prof.Phone_Number = update.Phone_Number;
+                    prof.Category_Id = update.Category_Id;
+                    prof.SubCategory_Id = update.SubCategory_Id;
+                    prof.Image_Path = update.Image_Path;
+                    //profile.UpdateUserProfile(update);
+
+                    context.Users.Add(prof);
+                    context.Entry(prof).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    ViewBag.Gender_Id = new SelectList(db.Genders, "Gender_Id", "Gender_Type");
+                    ViewBag.Qualification_Id = new SelectList(db.Qualifications, "Qualification_Id", "Qualification_Type");
+                    ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Type");
+                    return RedirectToAction("UserProfile");
+                }
+            }
+            catch (Exception e)
+            {
+                var msg = "" + e;
+
+            }
+            //ViewBag.Gender_Id = new SelectList(db.Genders, "Gender_Id", "Gender_Type");
+            //ViewBag.Qualification_Id = new SelectList(db.Qualifications, "Qualification_Id", "Qualification_Type");
+            //ViewBag.Category_Id = new SelectList(db.Categories, "Category_Id", "Category_Type");
+            return View();
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -96,7 +174,8 @@ namespace Daily_Services.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    
+                    return RedirectToAction("UserProfile");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -113,8 +192,8 @@ namespace Daily_Services.Controllers
         public ApplicationUser GetProfile(string id)
         {
             ApplicationDbContext db = new ApplicationDbContext();
-            var user = db.Users.Where(x => x.Id == id).FirstOrDefault();
-            db.Entry(user).State = EntityState.Detached;
+            var user = db.Users.Where(x => x.Id == id).Include(x => x.Category).FirstOrDefault();
+
             return user;
         }
 
@@ -126,6 +205,93 @@ namespace Daily_Services.Controllers
 
             return View(user);
         }
+
+        //Update User Profile
+        [HttpGet]
+        public ActionResult UpdateSP(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser user = new ApplicationUser();
+            user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+
+            //SP list
+
+
+        }
+
+
+        public ActionResult ServiceProvider()
+        {
+            var list = db.Users.Where(x => x.ServiceOffer == true && x.IsActive == true && x.IsDeleted == false).ToList();
+
+            return View(list);
+        }
+
+
+        //Post:Update User Profile
+        [HttpPost]
+        public ActionResult UpdateSP(RegisterViewModel model, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+            //  return View();
+
+        }
+
+
+
+
+        //Delete User Pofile
+        [HttpGet]
+        public ActionResult DeleteSP(int? id)
+        {
+            ApplicationUser user = new ApplicationUser();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //  ApplicationUser user = new ApplicationUser();
+            user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+
+
+        }
+
+
+        [HttpPost]
+        public ActionResult DeleteSP(RegisterViewModel model)
+        {
+
+            return View();
+
+        }
+
+
+
+
+
+
+
+
+
+
 
 
         //
@@ -176,6 +342,8 @@ namespace Daily_Services.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+
+
             List<SelectListItem> list = new List<SelectListItem>();
             foreach (var role in RoleManager.Roles)
             {
@@ -270,21 +438,21 @@ namespace Daily_Services.Controllers
         public ActionResult CustomerRegister()
         {
 
-            List<SelectListItem> list = new List<SelectListItem>();
+             List<SelectListItem> list = new List<SelectListItem>();
             foreach (var role in RoleManager.Roles)
             {
-                if (role.Name == "Customer")
+                if (role.Name == "User")
                 {
                     list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
-                    ViewBag.Roless = list;
                 }
             }
+            ViewBag.Roles = list;
             // ViewBag.Gender_Id = new SelectList(db.Genders, "Gender_Id", "Gender_Type");
 
             return View();
         }
 
-        // POST: /Account/Register
+        // POST: /Account/Customer
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -432,8 +600,7 @@ namespace Daily_Services.Controllers
         }
 
         //
-        // POST: /Account/ExternalLogin
-        [HttpPost]
+        // POST: /Account/External
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
@@ -544,7 +711,6 @@ namespace Daily_Services.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -552,7 +718,7 @@ namespace Daily_Services.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login","Account");
         }
 
         //

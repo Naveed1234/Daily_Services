@@ -4,36 +4,39 @@
     ViewBag.Title = "AcademicSubCategories";
 }
 
-<h2>AcademicSubCategories</h2>
+<div class="container">
+    <h2>AcademicSubCategories</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Category_Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SubCategory_Type)
-        </th>
-        <th></th>
-    </tr>
+   
+      @Html.ActionLink("Create New", "Create")
+    
+    <table class="table table-striped bg-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Category_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubCategory_Type)
+            </th>
+            <th>Actions</th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Category_Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubCategory_Type)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SubCategory_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SubCategory_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SubCategory_Id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Category_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCategory_Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SubCategory_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SubCategory_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SubCategory_Id })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

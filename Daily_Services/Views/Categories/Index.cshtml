@@ -1,33 +1,33 @@
 ﻿@model IEnumerable<Daily_Services.Models.Category>
-
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category_Type)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category_Type)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Category_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Category_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Category_Id })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="container-fluid">
+    <div class="col-md-6 col-md-push-6" style="margin-left:6px;width:315px">
+        <h2 class="mt-5">Category List</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-responsive table-striped bg-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category_Type)
+                </th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category_Type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Category_Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Category_Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Category_Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

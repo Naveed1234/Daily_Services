@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Daily_Services</RootNamespace>
     <AssemblyName>Daily_Services</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,6 +76,7 @@
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
@@ -96,11 +98,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -145,6 +144,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -228,9 +228,11 @@
     <Compile Include="Controllers\QualificationsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SearchServiceProviderController.cs" />
+    <Compile Include="Controllers\ServiceProviderController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
     <Compile Include="Controllers\TransportController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,9 +250,14 @@
     <Compile Include="Migrations\201905041251598_AddContactClass.Designer.cs">
       <DependentUpon>201905041251598_AddContactClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905150835425_contacttable.cs" />
+    <Compile Include="Migrations\201905150835425_contacttable.Designer.cs">
+      <DependentUpon>201905150835425_contacttable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -502,6 +509,49 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\About us copy.jpg" />
+    <Content Include="LoginFormDesign\css\main.css" />
+    <Content Include="LoginFormDesign\css\util.css" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="LoginFormDesign\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="LoginFormDesign\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="LoginFormDesign\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="LoginFormDesign\images\bg-01.jpg" />
+    <Content Include="LoginFormDesign\images\icons\favicon.ico" />
+    <Content Include="LoginFormDesign\js\main.js" />
+    <Content Include="LoginFormDesign\vendor\animate\animate.css" />
+    <Content Include="LoginFormDesign\vendor\animsition\css\animsition.css" />
+    <Content Include="LoginFormDesign\vendor\animsition\css\animsition.min.css" />
+    <Content Include="LoginFormDesign\vendor\animsition\js\animsition.js" />
+    <Content Include="LoginFormDesign\vendor\animsition\js\animsition.min.js" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\js\popper.js" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="LoginFormDesign\vendor\countdowntime\countdowntime.js" />
+    <Content Include="LoginFormDesign\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="LoginFormDesign\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="LoginFormDesign\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="LoginFormDesign\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="LoginFormDesign\vendor\daterangepicker\moment.js" />
+    <Content Include="LoginFormDesign\vendor\daterangepicker\moment.min.js" />
+    <Content Include="LoginFormDesign\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="LoginFormDesign\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="LoginFormDesign\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="LoginFormDesign\vendor\select2\select2.css" />
+    <Content Include="LoginFormDesign\vendor\select2\select2.js" />
+    <Content Include="LoginFormDesign\vendor\select2\select2.min.css" />
+    <Content Include="LoginFormDesign\vendor\select2\select2.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -513,6 +563,67 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="LoginFormDesign\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="LoginFormDesign\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="LoginFormDesign\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="LoginFormDesign\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="LoginFormDesign\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="LoginFormDesign\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="LoginFormDesign\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -524,6 +635,54 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="ServiceProviderRegTheme\css\main.css" />
+    <Content Include="ServiceProviderRegTheme\css\util.css" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="ServiceProviderRegTheme\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="ServiceProviderRegTheme\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="ServiceProviderRegTheme\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="ServiceProviderRegTheme\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="ServiceProviderRegTheme\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="ServiceProviderRegTheme\images\bg-01.jpg" />
+    <Content Include="ServiceProviderRegTheme\images\icons\favicon.ico" />
+    <Content Include="ServiceProviderRegTheme\images\icons\map-marker.png" />
+    <Content Include="ServiceProviderRegTheme\images\ServiceProvider.jpg" />
+    <Content Include="ServiceProviderRegTheme\js\main.js" />
+    <Content Include="ServiceProviderRegTheme\js\map-custom.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\animate\animate.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\animsition\css\animsition.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\animsition\css\animsition.min.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\animsition\js\animsition.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\animsition\js\animsition.min.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\js\popper.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\countdowntime\countdowntime.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\daterangepicker\moment.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\daterangepicker\moment.min.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\select2\select2.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\select2\select2.js" />
+    <Content Include="ServiceProviderRegTheme\vendor\select2\select2.min.css" />
+    <Content Include="ServiceProviderRegTheme\vendor\select2\select2.min.js" />
+    <Content Include="Style\LoginDesign.css" />
     <Content Include="Style\RegisterStyle.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -598,10 +757,82 @@
     <Content Include="Views\UserMailer\Welcome.cshtml" />
     <Content Include="Views\UserMailer\_Layout.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="ServiceProviderRegTheme\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="ServiceProviderRegTheme\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="ServiceProviderRegTheme\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="ServiceProviderRegTheme\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="ServiceProviderRegTheme\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="ServiceProviderRegTheme\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="ServiceProviderRegTheme\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="ServiceProviderRegTheme\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Views\Account\UpdateSP.cshtml" />
+    <Content Include="Views\Account\ServiceProvider.cshtml" />
+    <Content Include="Views\Account\UpdateCustomer.cshtml" />
+    <Content Include="Views\User\UserRister.cshtml" />
+    <Content Include="Views\User\UserRegister.cshtml" />
+    <Content Include="Views\ServiceProvider\Academic.cshtml" />
+    <Content Include="Views\ServiceProvider\AcademicDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\" />
+    <Folder Include="LoginDesignForm\" />
     <Folder Include="Views\Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -626,6 +857,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905041251598_AddContactClass.resx">
       <DependentUpon>201905041251598_AddContactClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905150835425_contacttable.resx">
+      <DependentUpon>201905150835425_contacttable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
